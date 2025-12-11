@@ -1,0 +1,48 @@
+bussinbank/
+├── .venv/                          # Local virtual env (gitignored)
+├── data/                           # Local storage (gitignored)
+│   ├── chroma_db/                  # Chroma vector DB folder
+│   ├── transactions.json           # Your transaction history
+│   └── accounts.json               # Account balances/goals
+├── src/
+│   └── bussinbank/
+│       ├── __init__.py
+│       ├── __main__.py             # Entry point: poetry run bussinbank
+│       │
+│       ├── config/
+│       │   └── settings.py         # Loads .env, LLM keys
+│       │
+│       ├── core/                   # Pure business logic (no LLM)
+│       │   ├── models.py           # Pydantic schemas (Transaction, Account, Goal)
+│       │   ├── ledger.py           # Transaction log + balance math
+│       │   ├── forecaster.py       # Cash flow prediction
+│       │   └── goals.py            # Goal tracking engine
+│       │
+│       ├── memory/
+│       │   ├── vector_store.py     # Chroma for semantic search
+│       │   └── structured_store.py # JSON for exact queries
+│       │
+│       ├── tools/                  # Agent tools (LangGraph)
+│       │   ├── transaction_tools.py
+│       │   ├── forecast_tools.py
+│       │   ├── goal_tools.py
+│       │   └── search_tools.py
+│       │
+│       ├── agent/
+│       │   ├── graph.py            # LangGraph workflow
+│       │   ├── prompts.py          # CFO voice prompts
+│       │   ├── nodes.py            # Reasoning nodes
+│       │   └── state.py            # Shared state
+│       │
+│       └── cli/
+│           └── app.py              # Typer CLI interface
+│
+├── tests/
+│   ├── unit/
+│   │   ├── test_models.py
+│   │   └── test_forecaster.py
+│
+├── .env                            # Secrets (gitignored)
+├── .gitignore
+├── pyproject.toml                  # Your fixed file
+└── README.md                       # Touch this if missing
