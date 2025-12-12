@@ -117,6 +117,16 @@ class Ledger:
                 spending[cat] = spending.get(cat, Decimal("0")) + abs(tx.amount)
 
         return {k: v.quantize(Decimal("0.01")) for k, v in sorted(spending.items())}
+    
+    def get_spending_this_month(self) -> Decimal:
+        """Total spent this calendar month."""
+        today = date.today()
+        start = today.replace(day=1)
+        return sum(
+            abs(tx.amount)
+            for tx in self.data.transactions
+            if start <= tx.date <= today and tx.amount < 0
+        )
 
     def goal_summary(self) -> list[dict]:
         summary = []
