@@ -6045,4 +6045,4 @@ dev = ["black", "pyright", "pytest", "pytest-cov", "ruff"]
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.13,<4.0"
-content-hash = "caa4e0a1618ad9c36f0b70ec2f11fdc98c1d80577ae784ae4bf4ef44a2e38c20"
+content-hash = "8a3dfb67c9dd9f42cfd89355b9fe1add87772acc16fa6f97b08f6fa0bc036cb1"
